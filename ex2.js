@@ -1,4 +1,4 @@
-console.log("EX2 LOADED");
+
 <input type="number" id="n" placeholder="Enter n">
 <button onclick="euler1()">Euler Q1 (n = 1000)</button>
 
