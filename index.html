@@ -1,95 +1,76 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>JavaScript Exercises</title>
+
+    <!-- Load JS files -->
+    <script src="ex1.js" defer></script>
+    <script src="ex2.js" defer></script>
+    <script src="ex3.js" defer></script>
 </head>
 
 <body>
 
-    <h1>Exercise 1</h1>
+    <!-- ================= EXERCISE 1 ================= -->
+    <h1>Exercise 1 - Baggage Check</h1>
 
-    <input type="text" id="weight" placeholder="Enter weight">
+    <input type="text" id="weight" placeholder="Enter baggage weight">
 
-    <button onclick="check()">
-        Check Baggage
+    <button onclick="check()">Check Baggage</button>
+
+    <br><br>
+
+    <input type="text" id="removed" placeholder="Enter weight to remove" style="display:none;">
+
+    <button id="remB" onclick="removeWeight()" style="display:none;">
+        Remove baggage
+    </button>
+
+
+    <!-- ================= EXERCISE 2 ================= -->
+    <h1>Exercise 2 - Project Euler</h1>
+
+    <button onclick="euler1()">
+        Solve Euler Q1
     </button>
 
     <br><br>
 
-    <input type="text"
-           id="removed"
-           placeholder="Remove weight"
-           style="display:none;">
+    <input type="text" id="a" placeholder="A">
+    <input type="text" id="b" placeholder="B">
+    <input type="text" id="n" placeholder="N">
 
-    <button id="remB"
-            onclick="removeWeight()"
-            style="display:none;">
-        Remove Weight
+    <button onclick="eulerCustom()">
+        Custom Sum of Multiples
     </button>
 
-    <script>
 
-        let maxWeight = 15;
+    <!-- ================= EXERCISE 3 ================= -->
+    <h1>Exercise 3 - Lists</h1>
 
-        let check = () => {
+    <h3>Part 1</h3>
 
-            let weight =
-                parseFloat(
-                    document.getElementById('weight').value
-                );
+    <input type="text" id="a1" placeholder="A">
+    <input type="text" id="b1" placeholder="B">
+    <input type="text" id="l" placeholder="List (space separated)">
 
-            if (isNaN(weight)) {
-                alert("Enter valid number");
-                return;
-            }
+    <button onclick="eulerlist()">
+        Run Part 1
+    </button>
 
-            if (weight > maxWeight) {
 
-                alert("Overweight baggage!");
+    <h3>Part 2 & 3</h3>
 
-                document.getElementById('removed').style.display = 'block';
+    <input type="text" id="aList" placeholder="A list (space separated)">
+    <input type="text" id="mList" placeholder="L list (space separated)">
 
-                document.getElementById('remB').style.display = 'block';
+    <button onclick="euler2Lists()">
+        Run Part 2
+    </button>
 
-            }
-            else {
-
-                alert("Weight OK");
-
-            }
-        }
-
-        let removeWeight = () => {
-
-            let weight =
-                parseFloat(
-                    document.getElementById('weight').value
-                );
-
-            let removed =
-                parseFloat(
-                    document.getElementById('removed').value
-                );
-
-            let newWeight = weight - removed;
-
-            document.getElementById('weight').value = newWeight;
-
-            if (newWeight <= maxWeight) {
-
-                alert("Now OK to proceed");
-
-            }
-            else {
-
-                alert("Still overweight");
-
-            }
-        }
-
-    </script>
+    <button onclick="euler2Lists1()">
+        Run Part 3
+    </button>
 
 </body>
-
 </html>
