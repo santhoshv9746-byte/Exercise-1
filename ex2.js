@@ -11,6 +11,8 @@
 <script>
 // Project Euler Q1: sum of multiples of 3 or 5 below 1000
 let euler1 = () => {
+    alert("Euler 1 working");
+};
 
     let sum = 0;
 
@@ -25,6 +27,8 @@ let euler1 = () => {
 }
 
 let eulerCustom = () => {
+    alert("Custom Euler working");
+};
 
     let a =
         parseInt(
