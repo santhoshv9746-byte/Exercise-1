@@ -1,117 +1,95 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>JavaScript Exercises</title>
-
-    <script src="ex1.js"></script>
-    <script src="ex2.js"></script>
-    <script src="ex3.js"></script>
 </head>
 
 <body>
 
     <h1>Exercise 1</h1>
 
-    <p>
-        <input type="text" id="weight" placeholder="Enter baggage weight">
-        <button onclick="check()">Check Baggage</button>
-    </p>
+    <input type="text" id="weight" placeholder="Enter weight">
 
-    <p>
-        <input type="text" id="removed" placeholder="Weight to remove" style="display:none;">
-        
-        <button id="remB"
-                onclick="remove()"
-                style="display:none;">
-            Remove this much baggage (kg)
-        </button>
-    </p>
+    <button onclick="check()">
+        Check Baggage
+    </button>
 
+    <br><br>
 
-    <h1>Exercise 2</h1>
+    <input type="text"
+           id="removed"
+           placeholder="Remove weight"
+           style="display:none;">
 
-    <p>
-        <button onclick="euler1()">
-            Press for solution to Project Euler
-        </button>
-    </p>
+    <button id="remB"
+            onclick="removeWeight()"
+            style="display:none;">
+        Remove Weight
+    </button>
 
-    <p>
-        <label>A</label>
-        <input type="text" id="a">
+    <script>
 
-        <label>B</label>
-        <input type="text" id="b">
+        let maxWeight = 15;
 
-        <label>N</label>
-        <input type="text" id="n">
-    </p>
+        let check = () => {
 
-    <p>
-        <button onclick="eulerCustom()">
-            Press for custom sum of multiples
-        </button>
-    </p>
+            let weight =
+                parseFloat(
+                    document.getElementById('weight').value
+                );
 
-    <p>
-        Find the sum of multiples of a or b less than n,
-        where a, b and n are integer parameters.
-    </p>
+            if (isNaN(weight)) {
+                alert("Enter valid number");
+                return;
+            }
 
+            if (weight > maxWeight) {
 
-    <h1>Exercise 3</h1>
+                alert("Overweight baggage!");
 
-    <h3>Part 1</h3>
+                document.getElementById('removed').style.display = 'block';
 
-    <p>
-        Sum of multiples of a or b in list l.
-    </p>
+                document.getElementById('remB').style.display = 'block';
 
-    <p>
-        <label>A</label>
-        <input type="text" id="a1"><br><br>
+            }
+            else {
 
-        <label>B</label>
-        <input type="text" id="b1"><br><br>
+                alert("Weight OK");
 
-        <label>L</label>
-        <input type="text" id="l"
-               placeholder="Example: 1 2 3 4 5">
-    </p>
+            }
+        }
 
-    <p>
-        <button onclick="eulerlist()">
-            Run Exercise 3 - Part 1
-        </button>
-    </p>
+        let removeWeight = () => {
 
+            let weight =
+                parseFloat(
+                    document.getElementById('weight').value
+                );
 
-    <h3>Part 2 & Part 3</h3>
+            let removed =
+                parseFloat(
+                    document.getElementById('removed').value
+                );
 
-    <p>
-        Compute the sum of multiples of elements in list a,
-        found in list l.
-    </p>
+            let newWeight = weight - removed;
 
-    <p>
-        <label>A List</label>
-        <input type="text" id="aList"
-               placeholder="Example: 2 3 5">
+            document.getElementById('weight').value = newWeight;
 
-        <label>L List</label>
-        <input type="text" id="mList"
-               placeholder="Example: 1 2 3 4 5 6">
-    </p>
+            if (newWeight <= maxWeight) {
 
-    <p>
-        <button onclick="euler2Lists()">
-            Run Part 2
-        </button>
+                alert("Now OK to proceed");
 
-        <button onclick="euler2Lists1()">
-            Run Part 3
-        </button>
-    </p>
+            }
+            else {
+
+                alert("Still overweight");
+
+            }
+        }
+
+    </script>
 
 </body>
+
 </html>
