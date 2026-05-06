@@ -7,17 +7,18 @@
 
 <body>
 
+
     <h1>Exercise 1</h1>
 
-    <input type="text" id="weight" placeholder="Enter weight">
+    <input type="number" id="weight" placeholder="Enter baggage weight">
 
     <button onclick="check()">
-        Check Baggage
+        Check
     </button>
 
     <br><br>
 
-    <input type="text"
+    <input type="number"
            id="removed"
            placeholder="Remove weight"
            style="display:none;">
@@ -25,71 +26,67 @@
     <button id="remB"
             onclick="removeWeight()"
             style="display:none;">
-        Remove Weight
+        Remove
     </button>
 
-    <script>
+    <hr>
 
-        let maxWeight = 15;
 
-        let check = () => {
 
-            let weight =
-                parseFloat(
-                    document.getElementById('weight').value
-                );
+    <h1>Exercise 2</h1>
 
-            if (isNaN(weight)) {
-                alert("Enter valid number");
-                return;
-            }
+    <button onclick="euler1()">
+        Euler Q1
+    </button>
 
-            if (weight > maxWeight) {
+    <br><br>
 
-                alert("Overweight baggage!");
+    <input type="number" id="a" placeholder="Enter a">
 
-                document.getElementById('removed').style.display = 'block';
+    <input type="number" id="b" placeholder="Enter b">
 
-                document.getElementById('remB').style.display = 'block';
+    <input type="number" id="n" placeholder="Enter n">
 
-            }
-            else {
+    <button onclick="eulerCustom()">
+        Custom
+    </button>
 
-                alert("Weight OK");
+    <hr>
 
-            }
-        }
 
-        let removeWeight = () => {
 
-            let weight =
-                parseFloat(
-                    document.getElementById('weight').value
-                );
+    <h1>Exercise 3</h1>
 
-            let removed =
-                parseFloat(
-                    document.getElementById('removed').value
-                );
+    <h3>Part 1</h3>
 
-            let newWeight = weight - removed;
+    <input type="number" id="a1" placeholder="A">
 
-            document.getElementById('weight').value = newWeight;
+    <input type="number" id="b1" placeholder="B">
 
-            if (newWeight <= maxWeight) {
+    <input type="text"
+           id="l"
+           placeholder="Example: 1 2 3 4 5">
 
-                alert("Now OK to proceed");
+    <button onclick="eulerlist()">
+        Run Part 1
+    </button>
 
-            }
-            else {
+    <br><br>
 
-                alert("Still overweight");
+    <h3>Part 2 & 3</h3>
 
-            }
-        }
+    <input type="text"
+           id="aList"
+           placeholder="Example: 2 3 5">
 
-    </script>
+    <input type="text"
+           id="mList"
+           placeholder="Example: 1 2 3 4 5 6">
 
-</body>
+    <button onclick="euler2Lists()">
+        Run Part 2
+    </button>
 
-</html>
+    <button onclick="euler2Lists1()">
+        Run Part 3
+    </button>
