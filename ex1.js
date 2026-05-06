@@ -1,19 +1,58 @@
-//write a function to alert if overweight (15kg) baggage
+<input type="number" id="weight" placeholder="Enter baggage weight">
+<button onclick="check()">Check</button>
 
-//call it from the page
+<br><br>
 
-            //alert("Hello");//write a check function here...
-            //update: the check function should reveal the "removed" text input
-            //if the baggage is overweight
-            //and a button to remove some
-            //the remove function should update the weight
-            //and let the user know when ok to proceed
-            let check=()=>{
-              alert('Checking Baggage weight: '+parseInt(document.getElementById('weight').value));
-              //These should only display if it is actually overweight
-              document.getElementById('removed').style='display:block;'
-              document.getElementById('remB').style='display:block;'
-            }
-            let remove=()=>alert('Removing weight: '+parseInt(document.getElementById('removed').value))
+<input type="number" id="removed" placeholder="Remove weight" style="display:none;">
+<button id="remB" onclick="removeWeight()" style="display:none;">Remove</button>
 
-            //Test edit no. 2;
+<script>
+let maxWeight = 15;
+
+let check = () => {
+  let weight = parseFloat(document.getElementById('weight').value);
+
+  if (isNaN(weight)) {
+    alert("Please enter a valid weight");
+    return;
+  }
+
+  if (weight > maxWeight) {
+    alert("Overweight! Limit is 15kg");
+
+    // Show remove options
+    document.getElementById('removed').style.display = 'block';
+    document.getElementById('remB').style.display = 'block';
+  } else {
+    alert("Weight is OK. You can proceed.");
+
+    // Hide remove options
+    document.getElementById('removed').style.display = 'none';
+    document.getElementById('remB').style.display = 'none';
+  }
+};
+
+let removeWeight = () => {
+  let weight = parseFloat(document.getElementById('weight').value);
+  let removed = parseFloat(document.getElementById('removed').value);
+
+  if (isNaN(removed) || removed <= 0) {
+    alert("Enter valid weight to remove");
+    return;
+  }
+
+  let newWeight = weight - removed;
+
+  document.getElementById('weight').value = newWeight;
+
+  if (newWeight <= maxWeight) {
+    alert("Now within limit! You can proceed.");
+
+    // Hide remove options
+    document.getElementById('removed').style.display = 'none';
+    document.getElementById('remB').style.display = 'none';
+  } else {
+    alert("Still overweight! Current weight: " + newWeight + "kg");
+  }
+};
+</script>
